@@ -8,7 +8,7 @@
     <div ng-app="dealerSearch">
       <div ng-controller="mapCtrl">
         {{map.center}},{{map.zoom}}
-        <ui-gmap-google-map center="map.center" zoom="map.zoom">
+        <ui-gmap-google-map center="map.center" zoom="map.zoom" bounds="map.bounds" refresh="map.refresh">
           <!-- other ui-gmap-directives here -->
         </ui-gmap-google-map>
       </div>
