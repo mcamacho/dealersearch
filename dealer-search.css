@@ -1,0 +1,32 @@
+#map-canvas { height: 300px; margin-left: 1em; }
+#map-canvas img { display: inline; max-width: none; }
+#map-canvas *, #map-canvas *:before, #map-canvas *:after { -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+#map-canvas .label-box { white-space: nowrap; width: 100%; }
+/*#map-canvas .info-box a { box-sizing: border-box; width: 33%; }*/
+
+#dealerList { border-width: 0 1px 1px; border-style: solid; border-color: #ccc; max-height: 130px; overflow: auto; }
+#dealerList section { border-top: 1px solid #ccc; padding: 0.5em; }
+#dealerList .content { display: none; }
+#dealerList .content ul { list-style: none; margin-left: 0; }
+#dealerList .active .content { display: block; }
+.distance { color:#555555;font-size: 14px; }
+#dealerList .content ul a { color:#898989;font-size: 12px; line-height: 14px; }
+#dealerList .active { background: #efefef; }
+#map-canvas .info-box a { display: inline-block; box-sizing: border-box; width: 32%; margin-right: 2px; }
+#map-canvas .info-box a:last-child { margin-right: 0; }
+#dealerList section:hover { background: #efefef; } 
+input.search { width:100%; }
+.sortoptions { font-size: 11px; text-align: right;color:#555555; }
+button, .button .greyed { background-color: #555555; border-color: #000000; color: white;font-size: 12px !important; }
+@media only screen and (min-width: 768px) {
+  #location input { max-width: 175px; }
+  #dealerList { max-height: 343px; }
+  #map-canvas { height: 533px; margin-left: 0; }
+}
+#location input { margin-bottom: 0; }
+.sliderad { display: inline-block !important; }
+.slidenum { border: 1px solid #ccc; color: rgba(0, 0, 0, 0.75); font-size: 0.875em; margin-bottom: 0.625em !important; padding: 0.425em 0; }
+#radius-text { margin-top: 0.2em; }
+#radius.sliderad { width: 67%; vertical-align: middle; }
+#radiustxt.sliderad { width: 30%; margin-left: 3%; }
+#page-search-dealer { padding-top:1.5em; }

@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <script id="dealer-list-tmpl" type="text/html">
+    <section id="<%=mk.id%>">
+      <span class="id hide"><%=mk.id%></span>
+      <p class="title"><a href="#"><%=mk.dealer_name%><br><span class="distance"><%=mk.distance%> miles away</span></a></p>
+      <div class="content">
+        <ul>
+          <li class="font-size-85em"><a href="http://maps.google.com/maps?daddr=<%=mk.dealer_address_1%>+<%=mk.dealer_city%>,+<%=mk.dealer_state%>&z=12" target="_blank"><%=mk.dealer_address_1%><br> <%=mk.dealer_city%>, <%=mk.dealer_state%> <%=mk.dealer_zip%></a></li>
+          <li class="font-size-85em"><a href="tel:+1<%=mk.dealer_phone_main%>"><%=mk.dealer_phone_main%></a></li>
+        </ul>
+      </div>
+    </section>
+    </script>
+    <script id="dealer-marker-tmpl" type="text/html">
+    <p class="label-box" style="color:#555"><%=mk.dealer_name%><br><span style="font-size:12px"><%=mk.dealer_address_1%>, <%=mk.dealer_city%>, <%=mk.dealer_state%></span></p><p class="info-box"><a href="{home}/vehicle-search/#/id=<%=mk.id%>" class="button tiny"> Dealer<br>Inventory </a><a href="<%=mk.dealer_website%>" data-marinsm="aboutdealer" data-snowplow="follow-on-action:dealer-website:<%=mk.dealer_name%>:<%=mk.id%>" class="button tiny" target="_blank"> Dealer<br>Website </a><a href="http://maps.google.com/maps?daddr=<%=mk.dealer_address_1%>+<%=mk.dealer_city%>,+<%=mk.dealer_state%>&z=12" class="button tiny" target="_blank"> Get<br>Directions </a></p>
+    </script>
+  </head>
+  <body>
+    <div id="page-search-dealer">
+      <div class="row">
+        <div class="large-3 columns">
+          <section id="location">
+            <p>Locate Volkswagen Dealers</p>
+            <div class="row">
+              <div class="small-4 columns">
+                <p class="">
+                  <input type="text" name="zipcode" id="zipcode" placeholder="00000">
+                </p>
+                <label for="zipcode" class="columns">Zip Code</label>
+              </div>
+              <div class="small-8 columns">
+                <div class="row slidenum">
+                  <div id="radius-text" class="small-3 columns"></div>
+                  <div class="small-9 columns">
+                    <div id="radius"></div>
+                  </div>
+                </div>
+                <label class="">Miles</label>
+              </div>
+            </div>
+            <hr>
+          </section>
+          <div id="example-list">
+            <form><input class="search" placeholder="Search for Dealer"></form>
+            <p class="sortoptions">Sort by: 
+              <button class="sort tiny greyed" data-sort="title">Dealer Name</button>
+              <button class="sort tiny greyed" data-sort="distance">Distance</button>
+            </p>
+            <div id="dealerList" class="list position-relative"></div>
+          </div>
+        </div>
+        <div class="large-9 columns">
+          <div id="map-canvas"></div>
+        </div>
+      </div>
+    </div>
+    
+    <link href="//cdn.wpdlr.co/assets/general/js/nouislider/jquery.nouislider.legacy.min.css" rel="stylesheet">
+    
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="{home}/wp-content/themes/_fdt/js/components/lib/lodash.underscore.min.js"></script>
+    <script src="//cdn.wpdlr.co/assets/general/js/nouislider/jquery.nouislider.legacy.min.js"></script>
+    <script src="{home}/wp-content/themes/_fdt/js/components/zipcode.radius.js"></script>
+    <script src="{home}/wp-content/themes/_fdt/js/vehiclesearchmodules/vehiclesearchmodules.js"></script>
+    <script src="//cdn.wpdlr.co/assets/general/js/plugins/list.min.js"></script>
+
+    <script type="text/javascript">
+      // call the ziprad init method
+      mKlib.ziprad.init(dealerMap.refreshMap, dealerMap.refreshMap);
+    </script>
+  </body>
+</html>
