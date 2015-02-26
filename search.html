@@ -7,10 +7,20 @@
   <body>
     <div ng-app="dealerSearch">
       <div ng-controller="mapCtrl">
-        {{map.center}},{{map.zoom}}
         <ui-gmap-google-map center="map.center" zoom="map.zoom" bounds="map.bounds" refresh="map.refresh">
           <!-- other ui-gmap-directives here -->
-          <ui-gmap-markers models="markers" coords="'self'" icon="'icon'"></ui-gmap-markers>
+          <ui-gmap-markers models="markers" coords="'self'" icon="'icon'">
+            <ui-gmap-windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
+              <div ng-non-bindable >
+                <h3>{{dealer}}</h3>
+                <p>{{address}}<br>{{city}}, {{state}} {{zip}}</p>
+                <div>SALES: {{sales}}</div>
+                <div>SERVICE: {{service}}</div>
+                <div>PARTS: {{parts}}</div>
+                <p><a href="{{website}}" target="_blank">WEBSITE</a><a href="https://maps.google.com/maps?daddr={{dealer}},{{address}},{{city}},{{state}} {{zip}}" target="_blank">DIRECTIONS</a></p>
+              </div>
+            </ui-gmap-windows>
+          </ui-gmap-markers>
         </ui-gmap-google-map>
       </div>
     </div>

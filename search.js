@@ -27,7 +27,15 @@ function setMarker (marker, i) {
   return {
     latitude: parseFloat(marker.dealer_latitude),
     longitude: parseFloat(marker.dealer_longitude),
-    title: "i" + i,
+    dealer: marker.dealer_name,
+    address: marker.dealer_address_1,
+    city: marker.dealer_city,
+    state: marker.dealer_state,
+    zip: marker.dealer_zip,
+    sales: marker.dealer_phone_main,
+    service: marker.dealer_phone_service,
+    parts: marker.dealer_phone_parts,
+    website: marker.dealer_website,
     id: i
   };
 }
@@ -41,11 +49,6 @@ app.config(function(uiGmapGoogleMapApiProvider) {
 app.constant('_', window._);
 
 app.controller("mapCtrl", function($scope, uiGmapGoogleMapApi, $log, $http, _) {
-  // Do stuff with your $scope.
-  // Note: Some of the directives require at least something to be defined originally!
-  // e.g. $scope.markers = []
-  // uiGmapGoogleMapApi is a promise.
-  // The "then" callback function provides the google.maps object.
   uiGmapGoogleMapApi.then(function(maps) {
     $http.get("locations.json").
       success(function(data, status) {
@@ -56,6 +59,5 @@ app.controller("mapCtrl", function($scope, uiGmapGoogleMapApi, $log, $http, _) {
       error(function(data, status) {
         $log.error("Request failed" + status);
       });
-//     $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
   });
 });
