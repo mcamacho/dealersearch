@@ -13,14 +13,18 @@ function getLatLon (data) {
 function setMap (maps, data) {
   var bounds = getBounds(maps, data), neB = bounds.getNorthEast(), swB = bounds.getSouthWest(), mapC = bounds.getCenter();
   return {
-          center: getLatLon(mapC),
-          bounds: {
-            northeast: getLatLon(neB),
-            southwest: getLatLon(swB)
-          },
-          zoom: 8,
-          refresh: true
-        };
+    center: getLatLon(mapC),
+    bounds: {
+      northeast: getLatLon(neB),
+      southwest: getLatLon(swB)
+    },
+    zoom: 9,
+    refresh: true,
+    options: {
+      scrollwheel: false
+    },
+    control: {}
+  };
 }
 
 function setMarker (marker, i) {
@@ -54,7 +58,6 @@ app.controller("mapCtrl", function($scope, uiGmapGoogleMapApi, $log, $http, _) {
       success(function(data, status) {
         $scope.map = setMap(maps, data);
         $scope.markers = _.map(data, setMarker, maps);
-        $log.info($scope.markers);
       }).
       error(function(data, status) {
         $log.error("Request failed" + status);
