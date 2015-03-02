@@ -2,14 +2,16 @@
 <html>
   <head>
     <title>Dealer Search</title>
+    <link type="text/css" rel="stylesheet" href="http://cdn.wpdlr.co/assets/projectx/css/newtheme.css">
+    <link type="text/css" rel="stylesheet" href="http://cdn.wpdlr.co/assets/general/css/foundation/medium-grid.css">
     <link type="text/css" rel="stylesheet" href="search.css" media="screen">
   </head>
   <body>
     <div ng-app="dealerSearch">
       <div ng-controller="mapCtrl">
         <script type="text/ng-template" id="control.tpl.html">
-        <div>
-          <button ng-repeat="n in markers">{{n.dealer}}</button>
+        <div class="medium-3">
+          <button class="medium expand" ng-repeat="n in markers">{{n.dealer}}</button>
         </div>
         </script>
         <ui-gmap-google-map center="map.center" pan="true" control="map.control" zoom="map.zoom" bounds="map.bounds" refresh="map.refresh" options="map.options">
